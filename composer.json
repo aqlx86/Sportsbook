@@ -1,0 +1,30 @@
+{
+    "name": "aqlx86/sportsbook",
+    "description": "PHP Client for SportsBook API Service",
+    "homepage": "https://github.com/aqlx86/Sportsbook",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Arnel Labarda",
+            "email": "aqlx86@gmail.com",
+            "homepage": "https://aql.ph/",
+            "role": "Maintainer"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.9",
+        "nesbot/carbon": "^1.22",
+        "guzzlehttp/guzzle": "^6.3"
+    },
+    "require-dev": {
+
+    },
+    "autoload": {
+        "psr-4": {
+            "SportsBook\\": "src/SportsBook/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin"
+    }
+}
