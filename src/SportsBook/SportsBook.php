@@ -27,13 +27,13 @@ class SportsBook
     {
         $this->http_client = new Client([
             'base_uri' => env('SPORTSBOOK_BASE_URI'),
-            'timeout'  => 3.0,
+            'timeout'  => 10.0,
         ]);
 
         $this->default_params = [
             'Vendor'     => env('SPORTSBOOK_VENDOR'),
             'VendorKey'  => env('SPORTSBOOK_VENDOR_KEY'),
-            'TimeStamp'  => Carbon::now(),
+            'TimeStamp'  => Carbon::now()->format('Y/m/d H:i:s.u'),
             'Seq'        => str_random(16).time(),
         ];
     }
@@ -61,7 +61,8 @@ class SportsBook
     public function post($method)
     {
         $this->prepare_params();
-
+        \Log::info($this->form_params);
+        \Log::info($this->headers);
         $this->response = $this->http_client->request('POST', $method, [
             'json' => $this->form_params,
             'headers' => $this->headers,
