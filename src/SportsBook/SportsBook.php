@@ -5,6 +5,10 @@ namespace SportsBook;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+/**
+ * @todo should implement own get_microsecond()
+ * @todo should implement Logger
+ */
 class SportsBook
 {
     const METHOD_DO_SETTLEMENT = 'DoSettlement';
@@ -33,7 +37,7 @@ class SportsBook
         $this->default_params = [
             'Vendor'     => env('SPORTSBOOK_VENDOR'),
             'VendorKey'  => env('SPORTSBOOK_VENDOR_KEY'),
-            'TimeStamp'  => Carbon::now()->format('Y/m/d H:i:s.u'),
+            'TimeStamp'  => Carbon::now()->format('Y/m/d H:i:s.u').get_microsecond(),
             'Seq'        => str_random(16).time(),
         ];
     }
