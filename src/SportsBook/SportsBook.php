@@ -37,7 +37,7 @@ class SportsBook
         $this->default_params = [
             'Vendor'     => env('SPORTSBOOK_VENDOR'),
             'VendorKey'  => env('SPORTSBOOK_VENDOR_KEY'),
-            'TimeStamp'  => Carbon::now()->format('Y/m/d H:i:s.u').get_microsecond(),
+            'TimeStamp'  => Carbon::now()->format('Y/m/d H:i:s').'.'.get_microsecond(),
             'Seq'        => str_random(16).time(),
         ];
     }
