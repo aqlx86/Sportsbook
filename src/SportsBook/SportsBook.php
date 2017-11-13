@@ -16,6 +16,7 @@ class SportsBook
     const METHOD_PUSH_EVENTS_INFO = 'PushEventsInfo';
     const METHOD_PLACE_BET = 'PlaceBet';
     const METHOD_GET_CUSTOMER_INFO = 'getCustomerInfo';
+    const METHOD_GET_BALANCE = 'GetBalance';
 
     public $wrap_form_data = true;
 
