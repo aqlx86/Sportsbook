@@ -5,6 +5,9 @@ namespace SportsBook;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
+use SportsBook\Exception;
+
+
 /**
  * @todo should implement own get_microsecond()
  * @todo should implement Logger
@@ -66,12 +69,17 @@ class SportsBook
     public function post($method)
     {
         $this->prepare_params();
+
         \Log::info($this->form_params);
         \Log::info($this->headers);
+
         $this->response = $this->http_client->request('POST', $method, [
             'json' => $this->form_params,
             'headers' => $this->headers,
         ]);
+
+        if ($this->response['ErrorCode'])
+            throw new Exception\SportsbookException($this->response['ErrorMsg']);
 
         return $this;
     }
