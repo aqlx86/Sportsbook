@@ -78,8 +78,8 @@ class SportsBook
             'headers' => $this->headers,
         ]);
 
-        if ($this->response['ErrorCode'])
-            throw new Exception\SportsbookException($this->response['ErrorMsg']);
+        if ($this->response()['ErrorCode'])
+            throw new Exception\SportsbookException($this->response()['ErrorMsg']);
 
         return $this;
     }
