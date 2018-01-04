@@ -78,15 +78,25 @@ class SportsBook
             'headers' => $this->headers,
         ]);
 
-        if ($this->response()['ErrorCode'])
-            throw new Exception\SportsbookException($this->response()['ErrorMsg']);
-
         return $this;
     }
 
     public function response()
     {
         return json_decode($this->response->getBody(), true);
+    }
+
+    public function has_error()
+    {
+        return (bool) $this->response()['ErrorCode'];
+    }
+
+    public function get_error()
+    {
+        return [
+            'code' => $this->response()['ErrorCode'],
+            'message' => $this->response()['ErrorMsg']
+        ];
     }
 
     protected function prepare_params()
