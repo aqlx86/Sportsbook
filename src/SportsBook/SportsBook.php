@@ -5,12 +5,8 @@ namespace SportsBook;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
 
-use SportsBook\Exception;
-
-
 /**
- * @todo should implement own get_microsecond()
- * @todo should implement Logger
+ * @todo log requests
  */
 class SportsBook
 {
@@ -33,8 +29,10 @@ class SportsBook
 
     public function __construct()
     {
+        $config = config('sportsbook');
+
         $this->http_client = new Client([
-            'base_uri' => env('SPORTSBOOK_BASE_URI'),
+            'base_uri' => $config['api_url'],
             'timeout'  => 10.0,
         ]);
 
@@ -69,9 +67,6 @@ class SportsBook
     public function post($method)
     {
         $this->prepare_params();
-
-        \Log::info($this->form_params);
-        \Log::info($this->headers);
 
         $this->response = $this->http_client->request('POST', $method, [
             'json' => $this->form_params,
