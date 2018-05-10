@@ -7,6 +7,7 @@ class StatusMap
     protected $statuses = [
         'closed' => 'completed',
         'opening soon' => 'opening soon',
+        'open-pause' => 'open',
         'ready' => 'opening soon',
         'open' => 'open',
         'running' => 'running',
